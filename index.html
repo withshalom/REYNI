@@ -470,6 +470,8 @@ const ALL_ANIMALS = [
   { name: 'Beaver',   emoji: '🦫', sound: 'splash' },
   { name: 'Otter',    emoji: '🦦', sound: 'squeak' },
   { name: 'Jellyfish',emoji: '🪼', sound: 'bloop' },
+  { name: 'Dolphin',  emoji: '🐬', sound: 'click' },
+  { name: 'Whale',    emoji: '🐋', sound: 'whale' },
 ];
 
 // Web Audio for generated sounds
@@ -502,6 +504,8 @@ function playAnimalSound(sound) {
     splash: () => { playTone(220,'triangle',0.3,0.18); playTone(440,'triangle',0.15,0.12); },
     squeak: () => { playTone(800,'sine',0.12,0.18); setTimeout(()=>playTone(900,'sine',0.1,0.15),100); },
     bloop:  () => { playTone(350,'sine',0.4,0.2); setTimeout(()=>playTone(200,'sine',0.3,0.15),200); },
+    click:  () => { [900,1100,800,1000].forEach((f,i)=>setTimeout(()=>playTone(f,'sine',0.06,0.25),i*55)); },
+    whale:  () => { playTone(180,'sine',0.8,0.28); setTimeout(()=>playTone(120,'sine',0.6,0.25),400); setTimeout(()=>playTone(90,'sine',0.5,0.3),750); },
   };
   (sounds[sound] || sounds.bloop)();
 }
